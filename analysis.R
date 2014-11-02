@@ -7,9 +7,11 @@ biocLite("IRanges")
 biocLite("GenomicRanges")
 install.packages('gplots')
 install.packages('GenometriCorr',repos='http://genometricorr.sourceforge.net/R/',type='source')
-library('GenometriCorr')
 
+#load packages
+library('GenometriCorr')
 library("rtracklayer")
+
 refseq <- as(import(
   system.file("extdata","UCSCrefseqgenes_hg19.bed", package = "GenometriCorr")
   ),"RangedData")
@@ -59,6 +61,7 @@ visualize(cpgi_to_genes,
 #random example
 a <- as(import('a.bed'),"RangedData")
 b <- as(import('b.bed'), "RangedData")
+c <- as(import('c.bed'), "RangedData")
 
 VisualiseTwoIRanges(a["chr1"]$ranges,
                     b["chr1"]$ranges,
@@ -79,5 +82,22 @@ graphical.report(a_vs_b, pdffile = "a_vs_b_chr1_picture.pdf",
                  show.all = FALSE)
 
 visualize(a_vs_b, pdffile = "a_vs_b_chr1_picture_vis.pdf",
+          show.chromosomes = c("chr1"),
+          show.all = FALSE)
+
+a_vs_c <- GenometriCorrelation(a, c, chromosomes.length = human.chrom.length,
+                               chromosomes.to.proceed = c("chr1", "chr2", "chr3"),
+                               ecdf.area.permut.number = pn.area,
+                               mean.distance.permut.number = pn.dist,
+                               jaccard.measure.permut.number = pn.jacc,
+                               keep.distributions = TRUE, showProgressBar = TRUE)
+
+a_vs_c
+
+graphical.report(a_vs_c, pdffile = "a_vs_c_chr1_picture.pdf",
+                 show.chromosomes = c("chr1"),
+                 show.all = FALSE)
+
+visualize(a_vs_c, pdffile = "a_vs_c_chr1_picture_vis.pdf",
           show.chromosomes = c("chr1"),
           show.all = FALSE)
