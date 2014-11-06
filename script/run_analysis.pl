@@ -7,6 +7,8 @@ my $usage = "Usage: $0 <a.bed> <b.bed>\n";
 my $a = shift or die $usage;
 my $b = shift or die $usage;
 
+my $sink_file = $a . '_' . $b . '_' . '.out';
+
 my $time = time;
 my $outfile = $time . '.R';
 open(OUT, '>', $outfile) || die "Could not open $outfile for writing: $!\n";
@@ -41,7 +43,7 @@ a_vs_b <- GenometriCorrelation(a, b, chromosomes.length = human.chrom.length,
                                jaccard.measure.permut.number = pn.jacc,
                                keep.distributions = TRUE, showProgressBar = TRUE)
 
-sink('$time.out')
+sink('$sink_file')
 a_vs_b
 sink()
 q()

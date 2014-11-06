@@ -2,3 +2,5 @@
 .Rhistory
 *.bed
 hg19.genome
+*.out
+[0-9]*.R
