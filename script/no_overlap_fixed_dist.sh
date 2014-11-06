@@ -24,7 +24,11 @@ intersectBed -a 100000_window_10th.bed -b 100000_window_10th_3kb.bed
 #run statistical tests
 run_analysis.pl 100000_window_10th.bed 100000_window_10th_3kb.bed
 
+to_png.sh
+
 #moving results
 mv *.pdf ../pdf
 mv *.png ../image
 mv *.out ../result
+
+rm *.bed

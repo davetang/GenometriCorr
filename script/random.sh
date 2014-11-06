@@ -11,3 +11,5 @@ to_png.sh
 mv *.pdf ../pdf
 mv *.png ../image
 mv *.out ../result
+
+rm *.bed
