@@ -21,3 +21,8 @@ bedtools sample -i merged_comp.bed -n 50000 -seed 31 > merged_comp_subset.bed
 
 #run the statistical tests
 run_analysis.pl merged_subset.bed merged_comp_subset.bed
+
+#moving results
+mv *.pdf ../pdf
+mv *.png ../image
+mv *.out ../result

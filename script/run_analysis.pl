@@ -7,7 +7,8 @@ my $usage = "Usage: $0 <a.bed> <b.bed>\n";
 my $a = shift or die $usage;
 my $b = shift or die $usage;
 
-my $sink_file = $a . '_' . $b . '_' . '.out';
+my $base = $a . '_' . $b;
+$base =~ s/\./\_/g;
 
 my $time = time;
 my $outfile = $time . '.R';
@@ -43,9 +44,12 @@ a_vs_b <- GenometriCorrelation(a, b, chromosomes.length = human.chrom.length,
                                jaccard.measure.permut.number = pn.jacc,
                                keep.distributions = TRUE, showProgressBar = TRUE)
 
-sink('$sink_file')
+sink('$base.out')
 a_vs_b
 sink()
+
+graphical.report(a_vs_b, pdffile = "${base}_dist.pdf", show.chromosomes = c("chr1"), show.all = FALSE)
+visualize(a_vs_b, pdffile = "${base}_overlap.pdf", show.chromosomes = c("chr1"), show.all = FALSE)
 q()
 EOF
 

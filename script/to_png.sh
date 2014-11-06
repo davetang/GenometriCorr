@@ -6,7 +6,7 @@ for file in `ls *.pdf`;
    convert -density 300 $file -resize 50% $base.png
 done
 
-for file in `ls *picture*.png`;
+for file in `ls *.png`;
    do echo $file;
    base=`basename $file .png`
    convert -flatten $file ${base}_2.png
