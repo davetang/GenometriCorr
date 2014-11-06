@@ -30,7 +30,7 @@ cpgi_to_genes <- GenometriCorrelation(cpgis, refseq, chromosomes.length = human.
                                       ecdf.area.permut.number = pn.area,
                                       mean.distance.permut.number = pn.dist,
                                       jaccard.measure.permut.number = pn.jacc,
-                                      keep.distributions = TRUE, showProgressBar = FALSE)
+                                      keep.distributions = TRUE, showProgressBar = TRUE)
 
 sink('cpg_vs_refseq.out')
 cpgi_to_genes
