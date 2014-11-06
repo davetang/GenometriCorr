@@ -1,2 +1,4 @@
 .DS_Store
 .Rhistory
+*.bed
+hg19.genome
